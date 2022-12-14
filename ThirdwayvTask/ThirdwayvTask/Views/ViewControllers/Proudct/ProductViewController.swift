@@ -31,6 +31,12 @@ extension ProductViewController {
     private func initVC() {
         setupViewModel()
         setupCollectionView()
+        
+       if NetworkMonitor.shared.isConnected {
+            print("Connected")
+       }else {
+           print("Not Connected")
+       }
     }
     
     private func setupCollectionView() {
