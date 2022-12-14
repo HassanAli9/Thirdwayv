@@ -75,7 +75,7 @@ class CustomLayout: UICollectionViewLayout {
                            width: columnWidth,
                            height: height)
         let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-          print(insetFrame)
+
         // 5
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attributes.frame = insetFrame

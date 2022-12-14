@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - productes
-struct Product: Codable {
+class Product: Codable {
     let products: [ProductData]?
 }
 

@@ -25,14 +25,23 @@ extension UIImageView {
         }
     }
     
-}
-
-
-
-extension String {
-    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: font], context: nil)
-        return boundingBox.height
+    
+    func getImage(url: String, completion: @escaping (Data?) -> () ){
+        if let urlPostImg = URL(string: url) {
+            DispatchQueue.global().async {
+                do {
+                    let data = try Data(contentsOf: urlPostImg)
+                        completion(data)
+                } catch {
+                    print(error.localizedDescription)
+                    completion(nil)
+                }
+            }
+        }
     }
+    
 }
+
+
+
+

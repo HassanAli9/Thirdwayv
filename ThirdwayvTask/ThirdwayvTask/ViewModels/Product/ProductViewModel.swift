@@ -11,6 +11,8 @@ import UIKit
 
 class ProductViewModel {
    private let network = Network.shared
+   private var cash = NSCache<NSString, AnyObject>()
+
     
     var bindModelOnSuccess: ()->() = {}
     var bindErrorOnFailure: ()->() = {}
@@ -18,6 +20,7 @@ class ProductViewModel {
     private var model: [ProductData]? {
         didSet {
             bindModelOnSuccess()
+            saveData()
         }
     }
     var errorMessage: String? {
@@ -55,11 +58,41 @@ class ProductViewModel {
             switch result {
             case .success(let products):
                 self.model = products.products
-                print("Got data \(products)")
             case .failure(let error):
-                print(error)
                 self.errorMessage = error.localizedDescription
             }
         }
     }
+    
+    
+    func saveData()  {
+        let cashedProduct = CashedProduct()
+        var productsArray = [CashedProduct]()
+      
+        
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else {return}
+            for product in self.model! {
+            if let url = URL(string: (product.image?.url)!) {
+                    do {
+                        let data = try  Data(contentsOf: url)
+                        cashedProduct.image = UIImage(data: data)
+                        cashedProduct.price = product.price
+                        cashedProduct.description = product.productDescription
+                        productsArray.append(cashedProduct)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            self.cash.setObject(productsArray as NSArray, forKey: "products")
+        }
+    }
+}
+
+
+class CashedProduct {
+    var image: UIImage?
+    var price: Int?
+    var description: String?
 }
