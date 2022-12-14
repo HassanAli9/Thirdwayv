@@ -5,12 +5,12 @@ enum NetworkError: LocalizedError {
     case noData
 }
 
-public class Network {
-    public static let shared = Network()
+public class NetworkLayer {
+    public static let shared = NetworkLayer()
     private init() {}
 }
 
-public extension Network {
+public extension NetworkLayer {
     func get<T: Decodable>(responseModel: T.Type, completionHandler: @escaping (Result<T, Error>) -> ()) {
         let url = URL(string: "https://my-json-server.typicode.com/HassanAli9/ProductsDB/db")!
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -35,7 +35,7 @@ public extension Network {
     }
 }
 
-extension Network {
+extension NetworkLayer {
     @available(iOS 15.0, *)
     func get<T: Decodable>(endPoint: URL, responseModel: T.Type) async throws -> T {
         let url = URL(string: "https://my-json-server.typicode.com/HassanAli9/productesDB/db")!

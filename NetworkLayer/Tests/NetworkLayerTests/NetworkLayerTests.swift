@@ -1,11 +1,11 @@
 import XCTest
-@testable import Network
+@testable import NetworkLayer
 
-final class NetworkTests: XCTestCase {
+final class NetworkLayerTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(Network().text, "Hello, World!")
+        XCTAssertEqual(NetworkLayer().text, "Hello, World!")
     }
 }

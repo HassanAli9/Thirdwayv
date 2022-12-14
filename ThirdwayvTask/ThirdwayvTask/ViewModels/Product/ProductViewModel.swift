@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import Network
+import NetworkLayer
 import UIKit
 
 class ProductViewModel {
-   private let network = Network.shared
+   private let network = NetworkLayer.shared
    private var cash = NSCache<NSString, AnyObject>()
 
     

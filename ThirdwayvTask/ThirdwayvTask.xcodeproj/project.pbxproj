@@ -13,9 +13,9 @@
 		0C51DF512948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DF4F2948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld */; };
 		0C51DF532948EE5E00F26952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DF522948EE5E00F26952 /* Assets.xcassets */; };
 		0C51DF562948EE5E00F26952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DF542948EE5E00F26952 /* LaunchScreen.storyboard */; };
-		0C51DF622948EF0B00F26952 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 0C51DF612948EF0B00F26952 /* Network */; };
 		0C85393E2949EDB600ABAAB1 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85393D2949EDB600ABAAB1 /* CustomLayout.swift */; };
 		0C853944294A1A1500ABAAB1 /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C853943294A1A1500ABAAB1 /* String+Height.swift */; };
+		0C853948294A482700ABAAB1 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0C853947294A482700ABAAB1 /* NetworkLayer */; };
 		0CAB1C5829497C9C00EE1BF8 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB1C5729497C9C00EE1BF8 /* ProductViewModel.swift */; };
 		0CAB1C5B29497D6800EE1BF8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB1C5A29497D6800EE1BF8 /* Product.swift */; };
 		0CAB1C5D2949806500EE1BF8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB1C5C2949806500EE1BF8 /* ProductViewController.swift */; };
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C51DF622948EF0B00F26952 /* Network in Frameworks */,
+				0C853948294A482700ABAAB1 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +222,7 @@
 			);
 			name = ThirdwayvTask;
 			packageProductDependencies = (
-				0C51DF612948EF0B00F26952 /* Network */,
+				0C853947294A482700ABAAB1 /* NetworkLayer */,
 			);
 			productName = ThirdwayvTask;
 			productReference = 0C51DF432948EE5D00F26952 /* ThirdwayvTask.app */;
@@ -507,9 +507,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0C51DF612948EF0B00F26952 /* Network */ = {
+		0C853947294A482700ABAAB1 /* NetworkLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Network;
+			productName = NetworkLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 
