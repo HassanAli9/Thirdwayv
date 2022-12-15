@@ -42,7 +42,9 @@ extension ProductCell {
     }
     
     func setupCell(with product: ProductData) {
-        productImage.setImg(url: (product.image?.url)!)
+        if let url = product.image?.url {
+            productImage.setImg(url: url)
+        }
         productPrice.text = String(product.price ?? 0) + "$"
         productDescription.text = product.productDescription
     }

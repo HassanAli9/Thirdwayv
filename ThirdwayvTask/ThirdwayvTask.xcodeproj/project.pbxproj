@@ -13,6 +13,7 @@
 		0C51DF512948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DF4F2948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld */; };
 		0C51DF532948EE5E00F26952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DF522948EE5E00F26952 /* Assets.xcassets */; };
 		0C51DF562948EE5E00F26952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DF542948EE5E00F26952 /* LaunchScreen.storyboard */; };
+		0C75C079294AD75A00D6346B /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C75C078294AD75A00D6346B /* ProductDetailsViewController.swift */; };
 		0C85393E2949EDB600ABAAB1 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85393D2949EDB600ABAAB1 /* CustomLayout.swift */; };
 		0C853944294A1A1500ABAAB1 /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C853943294A1A1500ABAAB1 /* String+Height.swift */; };
 		0C853948294A482700ABAAB1 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0C853947294A482700ABAAB1 /* NetworkLayer */; };
@@ -34,6 +35,7 @@
 		0C51DF522948EE5E00F26952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C51DF552948EE5E00F26952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C51DF572948EE5E00F26952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C75C078294AD75A00D6346B /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		0C85393D2949EDB600ABAAB1 /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		0C853943294A1A1500ABAAB1 /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		0C853949294A48B000ABAAB1 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -78,9 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				0C51DF4F2948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld */,
+				0CAB1C5029497ABA00EE1BF8 /* AppDelegates */,
 				0CAB1C642949922700EE1BF8 /* Extensions */,
 				0CAB1C5929497D4500EE1BF8 /* PONSOs */,
-				0CAB1C5029497ABA00EE1BF8 /* AppDelegates */,
 				0CAB1C5129497AC600EE1BF8 /* ViewModels */,
 				0CAB1C5229497B3300EE1BF8 /* Views */,
 				0CAB1C5529497C2200EE1BF8 /* Resources */,
@@ -94,6 +96,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C75C077294AD72A00D6346B /* Product Details */ = {
+			isa = PBXGroup;
+			children = (
+				0C75C078294AD75A00D6346B /* ProductDetailsViewController.swift */,
+			);
+			path = "Product Details";
 			sourceTree = "<group>";
 		};
 		0C85393F294A053100ABAAB1 /* Layouts */ = {
@@ -144,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				0CAB1C5E29498EA100EE1BF8 /* Proudct */,
+				0C75C077294AD72A00D6346B /* Product Details */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +297,7 @@
 				0C85393E2949EDB600ABAAB1 /* CustomLayout.swift in Sources */,
 				0CAB1C5D2949806500EE1BF8 /* ProductViewController.swift in Sources */,
 				0C51DF472948EE5D00F26952 /* AppDelegate.swift in Sources */,
+				0C75C079294AD75A00D6346B /* ProductDetailsViewController.swift in Sources */,
 				0C85394A294A48B000ABAAB1 /* NetworkMonitor.swift in Sources */,
 				0C853944294A1A1500ABAAB1 /* String+Height.swift in Sources */,
 				0C51DF492948EE5D00F26952 /* SceneDelegate.swift in Sources */,

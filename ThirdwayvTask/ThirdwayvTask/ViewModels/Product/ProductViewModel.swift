@@ -38,20 +38,21 @@ class ProductViewModel {
         return model?[indexPath.row]
     }
     
+    func getChasedProduct(at indexPath: IndexPath) -> CashedProduct? {
+      let products = cash.object(forKey: "products") as? [CashedProduct]
+        print(products)
+      return products?[indexPath.row]
+    }
+    
     func getCount() -> Int? {
         model?.count ?? 0
     }
     
     func getImageHeight(at indexPath: IndexPath) -> CGFloat {
-        
-       
         let height = (model?[indexPath.row].image?.height!)!
         return CGFloat(height)
     }
-    
-    
    
-    
     func fetchData() {
         network.get(responseModel: Product.self) { [weak self] result in
             guard let self = self else {return}
@@ -64,18 +65,17 @@ class ProductViewModel {
         }
     }
     
-    
-    func saveData()  {
-        let cashedProduct = CashedProduct()
+    func saveData() {
         var productsArray = [CashedProduct]()
-      
         
         DispatchQueue.global().async { [weak self] in
             guard let self = self else {return}
-            for product in self.model! {
+            guard let products = self.model else {return}
+            for product in products {
             if let url = URL(string: (product.image?.url)!) {
                     do {
                         let data = try  Data(contentsOf: url)
+                        let cashedProduct = CashedProduct()
                         cashedProduct.image = UIImage(data: data)
                         cashedProduct.price = product.price
                         cashedProduct.description = product.productDescription
@@ -86,6 +86,9 @@ class ProductViewModel {
                 }
             }
             self.cash.setObject(productsArray as NSArray, forKey: "products")
+            print("Saved")
+            let products2 = self.cash.object(forKey: "products") as? [CashedProduct]
+            print(products2![0].image)
         }
     }
 }

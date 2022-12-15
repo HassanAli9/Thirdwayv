@@ -24,22 +24,6 @@ extension UIImageView {
             }
         }
     }
-    
-    
-    func getImage(url: String, completion: @escaping (Data?) -> () ){
-        if let urlPostImg = URL(string: url) {
-            DispatchQueue.global().async {
-                do {
-                    let data = try Data(contentsOf: urlPostImg)
-                        completion(data)
-                } catch {
-                    print(error.localizedDescription)
-                    completion(nil)
-                }
-            }
-        }
-    }
-    
 }
 
 

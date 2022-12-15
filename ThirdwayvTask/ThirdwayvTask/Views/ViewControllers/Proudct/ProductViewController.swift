@@ -98,9 +98,12 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var sellRentVC: AdVC
-//        let category = model[indexPath.row]
-//        navigationController?.pushViewController(sellRentVC, animated: true)
+        let productDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+        
+        guard let product = productViewModel.getChasedProduct(at: indexPath) else {return}
+        productDetailsViewController.product = product
+        
+        navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
     
     
@@ -115,12 +118,13 @@ extension ProductViewController: UICollectionViewDelegateFlowLayout, CustomLayou
         
         let width = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)) / 2
         let desc = productViewModel.getProduct(at: indexPath)?.productDescription
+        let photoHeight = productViewModel.getImageHeight(at: indexPath)
+        
+        guard let textHeight = desc?.heightWithConstrainedWidth(width: width, font: .systemFont(ofSize: 16)) else
+        {return photoHeight + 67}
         
         
-        let textHeight = desc?.heightWithConstrainedWidth(width: width, font: .systemFont(ofSize: 16))
-        
-        
-        let height = productViewModel.getImageHeight(at: indexPath) + textHeight! + 67
+        let height = photoHeight + textHeight + 67
         return  height
     }
     

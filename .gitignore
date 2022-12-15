@@ -2,3 +2,5 @@
 Network/.DS_Store
 *.xcbkptlist
 *.xcuserstate
+.DS_Store
+*.xcuserstate
