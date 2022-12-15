@@ -13,6 +13,7 @@ class ProductViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     // MARK: - VARIABLES
 
     var productViewModel: ProductViewModel!
@@ -38,12 +39,6 @@ extension ProductViewController {
     private func initVC() {
         setupViewModel()
         setupCollectionView()
-        NetworkMonitor.shared.startMontring()
-       if NetworkMonitor.shared.isConnected {
-            print("Connected")
-       }else {
-           print("Not Connected")
-       }
     }
     
     private func setupCollectionView() {
@@ -73,10 +68,7 @@ extension ProductViewController {
     private func onSuccess() {
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
-            if let layout = self?.collectionView?.collectionViewLayout as? CustomLayout {
-                layout.invalidateLayout()
-            }
-            
+            self?.activityIndicator.startAnimating()
         }
     }
     
@@ -100,6 +92,7 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
 
+        
         if let product = productViewModel.getProduct(at: indexPath) {
             cell.setupCell(with: product)
         }
@@ -116,7 +109,6 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
         productDetailsViewController.product = product
         
         navigationController?.delegate = transitionManager
-        
         navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
     

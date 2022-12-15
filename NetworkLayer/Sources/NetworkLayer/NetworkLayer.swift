@@ -15,7 +15,9 @@ public extension NetworkLayer {
         let url = URL(string: "https://my-json-server.typicode.com/HassanAli9/ProductsDB/db")!
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completionHandler(.failure(error))
+                DispatchQueue.main.async {
+                    completionHandler(.failure(error))
+                }
             } else if (response as? HTTPURLResponse)?.statusCode != 200 {
                 completionHandler(.failure(NetworkError.serverError))
             } else {
