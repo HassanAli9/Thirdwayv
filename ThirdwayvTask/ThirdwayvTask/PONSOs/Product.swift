@@ -7,17 +7,19 @@
 
 import Foundation
 
+
 // MARK: - productes
 class Product: Codable {
     let products: [ProductData]?
 }
 
 // MARK: - Producte
-struct ProductData: Codable {
-    let id: Int?
-    let productDescription: String?
-    let image: Image?
-    let price: Int?
+class ProductData: Codable {
+ var id: Int?
+ var productDescription: String?
+ var image: Image?
+ var imageDate: Data?
+ var price: Int?
 }
 
 // MARK: - Image

@@ -17,7 +17,7 @@ class ProductViewController: UIViewController {
     // MARK: - VARIABLES
 
     var productViewModel: ProductViewModel!
-    private let transitionManager = TransitionManager(duration: 0.5)
+    private let transitionManager = TransitionManager(duration: 0.3)
     var currentCell: ProductCell?
 
     // MARK: - LIFE-CYCLE
@@ -71,7 +71,7 @@ extension ProductViewController {
             self?.activityIndicator.startAnimating()
         }
     }
-    
+
     private func onFailure() {
         let alert = UIAlertController(title: "Error", message: productViewModel.errorMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: "Cancel", style: .cancel)
@@ -92,7 +92,6 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
 
-        
         if let product = productViewModel.getProduct(at: indexPath) {
             cell.setupCell(with: product)
         }
@@ -103,11 +102,11 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let productDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
-        
-        guard let product = productViewModel.getChasedProduct(at: indexPath) else {return}
+        let productDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController 
+
+        guard let product = productViewModel.getProduct(at: indexPath) else {return}
         productDetailsViewController.product = product
-        
+
         navigationController?.delegate = transitionManager
         navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
@@ -127,16 +126,12 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
 extension ProductViewController: UICollectionViewDelegateFlowLayout, CustomLayoutDelegate {
    
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        
-        
         let width = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)) / 2
         let desc = productViewModel.getProduct(at: indexPath)?.productDescription
         let photoHeight = productViewModel.getImageHeight(at: indexPath)
         
         guard let textHeight = desc?.heightWithConstrainedWidth(width: width, font: .systemFont(ofSize: 16)) else
         {return photoHeight + 67}
-        
-        
         let height = photoHeight + textHeight + 67
         return  height
     }

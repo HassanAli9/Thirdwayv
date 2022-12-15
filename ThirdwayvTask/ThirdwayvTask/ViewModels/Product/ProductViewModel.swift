@@ -10,9 +10,9 @@ import NetworkLayer
 import UIKit
 
 class ProductViewModel {
+   
    private let network = NetworkLayer.shared
    private var cash = NSCache<NSString, AnyObject>()
-
     
     var bindModelOnSuccess: ()->() = {}
     var bindErrorOnFailure: ()->() = {}
@@ -38,9 +38,8 @@ class ProductViewModel {
         return model?[indexPath.row]
     }
     
-    func getChasedProduct(at indexPath: IndexPath) -> CashedProduct? {
-      let products = cash.object(forKey: "products") as? [CashedProduct]
-        print(products)
+    func getChasedProduct(at indexPath: IndexPath) -> ProductData? {
+      let products = cash.object(forKey: "products") as? [ProductData]
       return products?[indexPath.row]
     }
     
@@ -68,8 +67,7 @@ class ProductViewModel {
     }
     
     func saveData() {
-        var productsArray = [CashedProduct]()
-        
+        var productsArray = [ProductData]()
         DispatchQueue.global().async { [weak self] in
             guard let self = self else {return}
             guard let products = self.model else {return}
@@ -77,27 +75,21 @@ class ProductViewModel {
             if let url = URL(string: (product.image?.url)!) {
                     do {
                         let data = try  Data(contentsOf: url)
-                        let cashedProduct = CashedProduct()
-                        cashedProduct.image = UIImage(data: data)
-                        cashedProduct.price = product.price
-                        cashedProduct.description = product.productDescription
-                        productsArray.append(cashedProduct)
+                        let productData = ProductData()
+                        productData.imageDate =  data
+                        productData.price = product.price
+                        productData.productDescription = product.productDescription
+                        productsArray.append(productData)
                     } catch {
                         print(error.localizedDescription)
                     }
                 }
             }
-            self.cash.setObject(productsArray as NSArray, forKey: "products")
-            print("Saved")
-            let products2 = self.cash.object(forKey: "products") as? [CashedProduct]
-            print(products2![0].image)
+            self.cash.setObject(productsArray as NSArray, forKey: CashKey.products.rawValue)
         }
     }
 }
 
-
-class CashedProduct {
-    var image: UIImage?
-    var price: Int?
-    var description: String?
+enum CashKey: NSString {
+    case products = "products"
 }

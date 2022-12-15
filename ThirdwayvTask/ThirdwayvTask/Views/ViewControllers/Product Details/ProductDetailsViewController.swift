@@ -14,12 +14,14 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productDescription: UITextView!
     
     
-    var product = CashedProduct()
+    var product: ProductData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productImage.image = product.image
+        if let imageDate = product.imageDate {
+            productImage.image = UIImage(data: imageDate)
+        }
         productPrice.text = String(product.price ?? 0) + "$"
-        productDescription.text = product.description
+        productDescription.text = product.productDescription
     }
 }
