@@ -80,8 +80,7 @@ extension ProductViewController {
 
 // MARK: - COLLECTION VIEW
 
-extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return productViewModel.getCount() ?? 0
@@ -106,6 +105,13 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
         navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let count = productViewModel.getCount() else {return}
+        if indexPath.row == count - 1 {
+            productViewModel.fetchData()
+        }
+    }
     
  
 }

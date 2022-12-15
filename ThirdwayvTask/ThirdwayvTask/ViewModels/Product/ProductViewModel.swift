@@ -17,7 +17,7 @@ class ProductViewModel {
     var bindModelOnSuccess: ()->() = {}
     var bindErrorOnFailure: ()->() = {}
     
-    private var model: [ProductData]? {
+    private var model: [ProductData]? = [ProductData]() {
         didSet {
             bindModelOnSuccess()
             saveData()
@@ -58,7 +58,9 @@ class ProductViewModel {
             guard let self = self else {return}
             switch result {
             case .success(let products):
-                self.model = products.products
+                guard let products = products.products else {return}
+                //self.model = products
+                self.model?.append(contentsOf: products)
             case .failure(let error):
                 self.errorMessage = error.localizedDescription
             }
