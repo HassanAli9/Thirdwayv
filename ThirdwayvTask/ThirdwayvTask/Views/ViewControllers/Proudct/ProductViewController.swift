@@ -16,6 +16,8 @@ class ProductViewController: UIViewController {
     // MARK: - VARIABLES
 
     var productViewModel: ProductViewModel!
+    private let transitionManager = TransitionManager(duration: 0.5)
+    var currentCell: ProductCell?
 
     // MARK: - LIFE-CYCLE
 
@@ -36,7 +38,7 @@ extension ProductViewController {
     private func initVC() {
         setupViewModel()
         setupCollectionView()
-        
+        NetworkMonitor.shared.startMontring()
        if NetworkMonitor.shared.isConnected {
             print("Connected")
        }else {
@@ -92,7 +94,6 @@ extension ProductViewController {
 extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(productViewModel.getCount())
         return productViewModel.getCount() ?? 0
     }
     
@@ -102,7 +103,9 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let product = productViewModel.getProduct(at: indexPath) {
             cell.setupCell(with: product)
         }
-        
+        if indexPath.row == 0 {
+            currentCell = cell
+        }
         return cell
     }
     
@@ -111,6 +114,8 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         guard let product = productViewModel.getChasedProduct(at: indexPath) else {return}
         productDetailsViewController.product = product
+        
+        navigationController?.delegate = transitionManager
         
         navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
