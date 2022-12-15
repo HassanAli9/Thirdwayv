@@ -18,7 +18,6 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(product)
         productImage.image = product.image
         productPrice.text = String(product.price ?? 0) + "$"
         productDescription.text = product.description

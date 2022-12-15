@@ -23,6 +23,11 @@ class ProductViewController: UIViewController {
         super.viewDidLoad()
         initVC()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       
+    }
 }
 
 // MARK: - SETUP
@@ -64,8 +69,12 @@ extension ProductViewController {
     }
     
     private func onSuccess() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+            if let layout = self?.collectionView?.collectionViewLayout as? CustomLayout {
+                layout.invalidateLayout()
+            }
+            
         }
     }
     
@@ -83,6 +92,7 @@ extension ProductViewController {
 extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(productViewModel.getCount())
         return productViewModel.getCount() ?? 0
     }
     
