@@ -82,13 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				0C51DF4F2948EE5D00F26952 /* ThirdwayvTask.xcdatamodeld */,
+				0C853949294A48B000ABAAB1 /* NetworkMonitor.swift */,
 				0CAB1C5029497ABA00EE1BF8 /* AppDelegates */,
 				0CAB1C642949922700EE1BF8 /* Extensions */,
 				0CAB1C5929497D4500EE1BF8 /* PONSOs */,
 				0CAB1C5129497AC600EE1BF8 /* ViewModels */,
 				0CAB1C5229497B3300EE1BF8 /* Views */,
 				0CAB1C5529497C2200EE1BF8 /* Resources */,
-				0C853949294A48B000ABAAB1 /* NetworkMonitor.swift */,
 			);
 			path = ThirdwayvTask;
 			sourceTree = "<group>";
@@ -144,11 +144,11 @@
 		0CAB1C5229497B3300EE1BF8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C75C07A294B276300D6346B /* TransitionManager.swift */,
 				0C853940294A054900ABAAB1 /* Cells */,
 				0C85393F294A053100ABAAB1 /* Layouts */,
 				0CAB1C5429497BDB00EE1BF8 /* Storyboards */,
 				0CAB1C5329497BC400EE1BF8 /* ViewControllers */,
-				0C75C07A294B276300D6346B /* TransitionManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

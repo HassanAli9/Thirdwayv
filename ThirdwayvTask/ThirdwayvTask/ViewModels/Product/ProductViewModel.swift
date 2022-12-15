@@ -35,13 +35,14 @@ class ProductViewModel {
     
     
     func getProduct(at indexPath: IndexPath)-> ProductData? {
-        return model?[indexPath.row]
+        if NetworkMonitor.shared.isConnected {
+            return model?[indexPath.row]
+        }else {
+            let products = cash.object(forKey: "products") as? [ProductData]
+            return products?[indexPath.row]
+        }
     }
-    
-    func getChasedProduct(at indexPath: IndexPath) -> ProductData? {
-      let products = cash.object(forKey: "products") as? [ProductData]
-      return products?[indexPath.row]
-    }
+
     
     func getCount() -> Int? {
         model?.count ?? 0
@@ -58,7 +59,6 @@ class ProductViewModel {
             switch result {
             case .success(let products):
                 guard let products = products.products else {return}
-                //self.model = products
                 self.model?.append(contentsOf: products)
             case .failure(let error):
                 self.errorMessage = error.localizedDescription

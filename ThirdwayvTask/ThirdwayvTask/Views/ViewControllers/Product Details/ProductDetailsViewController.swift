@@ -18,8 +18,8 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let imageDate = product.imageDate {
-            productImage.image = UIImage(data: imageDate)
+        if let url = product.image?.url {
+            productImage.downloadImage(from: url)
         }
         productPrice.text = String(product.price ?? 0) + "$"
         productDescription.text = product.productDescription

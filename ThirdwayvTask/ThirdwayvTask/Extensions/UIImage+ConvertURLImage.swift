@@ -8,21 +8,31 @@
 import Foundation
 import UIKit
 
+
+//MARK: - load image form url -
+//
 extension UIImageView {
-    
-    func setImg(url: String) {
-        if let urlPostImg = URL(string: url) {
-            DispatchQueue.global().async {
-                do {
-                    let data = try Data(contentsOf: urlPostImg)
-                    DispatchQueue.main.async {
-                        self.image = UIImage(data: data)
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
+    func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+            else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
             }
-        }
+        }.resume()
+    }
+    
+    /// load url into imag
+    /// - Parameters:
+    ///   - url: string url form serveice
+    ///   - usage: imageview.downloaded(your_image_url)
+    public func downloadImage(from link: String) {
+        guard let url = URL(string: link) else { return }
+        downloadImage(from: url)
     }
 }
 

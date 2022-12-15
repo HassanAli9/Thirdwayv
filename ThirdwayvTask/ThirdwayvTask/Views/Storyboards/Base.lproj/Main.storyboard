@@ -18,16 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-jh-Xhq">
-                                <rect key="frame" x="178" y="442" width="37" height="37"/>
-                                <color key="color" name="AccentColor"/>
-                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QhT-mS-0ng">
                                 <rect key="frame" x="8" y="103" width="377" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="hqj-qi-0vD" customClass="CustomLayout" customModule="ThirdwayvTask" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9hb-x9-dsn">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCell" id="9hb-x9-dsn">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xtF-Ch-Meh">
@@ -37,6 +33,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-jh-Xhq">
+                                <rect key="frame" x="178" y="442" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,24 +68,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-0W-x0S">
-                                <rect key="frame" x="16" y="75" width="361" height="213"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-0W-x0S">
+                                <rect key="frame" x="16" y="74.999999999999972" width="361" height="511.33333333333326"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gza-7X-b2b">
-                                <rect key="frame" x="16" y="304" width="361" height="24"/>
+                                <rect key="frame" x="16" y="602.33333333333337" width="361" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" systemColor="systemTealColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Describtion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1go-0n-wi7">
-                                <rect key="frame" x="16" y="352" width="361" height="24"/>
+                                <rect key="frame" x="16" y="650.33333333333337" width="361" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="htl-hx-uuQ">
-                                <rect key="frame" x="16" y="384" width="361" height="410"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="htl-hx-uuQ">
+                                <rect key="frame" x="16" y="682.33333333333337" width="361" height="111.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -99,7 +98,7 @@
                             <constraint firstItem="PNY-0W-x0S" firstAttribute="leading" secondItem="RdV-Uw-4Pc" secondAttribute="leading" constant="16" id="23m-tf-P8o"/>
                             <constraint firstItem="PNY-0W-x0S" firstAttribute="top" secondItem="RdV-Uw-4Pc" secondAttribute="top" constant="16" id="3K7-BT-ajb"/>
                             <constraint firstItem="htl-hx-uuQ" firstAttribute="top" secondItem="1go-0n-wi7" secondAttribute="bottom" constant="8" id="9au-l5-Xoa"/>
-                            <constraint firstItem="PNY-0W-x0S" firstAttribute="height" secondItem="tJh-KC-crn" secondAttribute="height" multiplier="0.25" id="C0v-tL-Ste"/>
+                            <constraint firstItem="PNY-0W-x0S" firstAttribute="height" secondItem="tJh-KC-crn" secondAttribute="height" multiplier="0.6" id="C0v-tL-Ste"/>
                             <constraint firstItem="Gza-7X-b2b" firstAttribute="top" secondItem="PNY-0W-x0S" secondAttribute="bottom" constant="16" id="FCH-Xx-Pp9"/>
                             <constraint firstItem="RdV-Uw-4Pc" firstAttribute="trailing" secondItem="PNY-0W-x0S" secondAttribute="trailing" constant="16" id="I2r-jG-wIK"/>
                             <constraint firstItem="1go-0n-wi7" firstAttribute="leading" secondItem="RdV-Uw-4Pc" secondAttribute="leading" constant="16" id="UTd-I2-Gf5"/>
@@ -149,9 +148,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

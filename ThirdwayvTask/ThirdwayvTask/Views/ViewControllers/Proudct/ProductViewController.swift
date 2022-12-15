@@ -39,6 +39,8 @@ extension ProductViewController {
     private func initVC() {
         setupViewModel()
         setupCollectionView()
+        
+        NetworkMonitor.shared.startMontring()
     }
     
     private func setupCollectionView() {
@@ -68,7 +70,7 @@ extension ProductViewController {
     private func onSuccess() {
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
-            self?.activityIndicator.startAnimating()
+            self?.activityIndicator.stopAnimating()
         }
     }
 
