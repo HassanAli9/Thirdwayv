@@ -30,7 +30,6 @@ final class NetworkMonitor {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = path.status == .satisfied
             self?.getConnectionType(path)
-            print(self?.isConnected)
         }
     }
     
